@@ -49,7 +49,7 @@ app.post("/api/send-event", async (req, res) => {
 });
 
 // Start the server on port 6000
-const PORT = 4000;
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+const port = process.env.PORT||4000;
+app.listen(port, () => {
+    console.log(`Server running on port ${port}`);
 });
