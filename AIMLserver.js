@@ -2,6 +2,23 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const amqp = require("amqplib");
 const cors=require("cors")
+const https = require('https');
+
+const url = 'https://python-server-5orj.onrender.com';
+
+https.get(url, (res) => {
+    console.log(`Status Code: ${res.statusCode}`);
+
+    res.on('data', (chunk) => {
+        console.log('Data chunk:', chunk.toString());
+    });
+
+    res.on('end', () => {
+        console.log('Response ended.');
+    });
+}).on('error', (err) => {
+    console.error('Error:', err.message);
+});
 
 const app = express();
 app.use(bodyParser.json());
